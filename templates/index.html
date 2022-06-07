@@ -4,6 +4,26 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Home</h1>
+    <h1>Lista de Jogadores</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Jogador</th>
+                <th>Posição</th>
+                <th>Idade</th>
+                <th>Clube</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jogador in jogadores %}
+            <tr>
+                <td>{{jogador['nome']}}</td>
+                <td>{{jogador['posicao']}}</td>
+                <td>{{jogador['idade']}}</td>
+                <td>{{jogador['clube']}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 {% endblock %}
