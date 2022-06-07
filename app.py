@@ -1,1 +1,13 @@
-print('Olá mundo')
+from flask import Flask, render_template
+from uuid import uuid4
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+
+
+app.run(debug=True)
