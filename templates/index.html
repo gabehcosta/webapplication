@@ -24,8 +24,8 @@
                     <td>{{jogador['posicao']}}</td>
                     <td>{{jogador['idade']}}</td>
                     <td>{{jogador['clube']}}</td>
-                    <td><a href="#" class="btn btn-success">Editar</a></td>
-                    <td><a href="#" class="btn btn-danger">Excluir</a></td>
+                    <td><a href="/editar/{{ jogador['id'] }}" class="btn btn-success">Editar</a></td>
+                    <td><a href="/excluir/{{ jogador['id'] }}" class="btn btn-danger">Excluir</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
