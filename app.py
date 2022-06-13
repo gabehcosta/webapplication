@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from uuid import uuid4
-
+from os.path import exists
+import csv
 app = Flask(__name__)
 
 jogadores = [
@@ -8,6 +9,20 @@ jogadores = [
     {'id':uuid4(), 'nome':'Weverton', 'posicao':'Goleiro', 'idade':34, 'clube':'Palmeiras'},
     {'id':uuid4(), 'nome':'Gabriel Jejum', 'posicao':'Atacante', 'idade':25, 'clube':'Manchester City'}
 ]
+
+if not exists('jogadores.csv'):
+    with open('jogadores.csv', 'wt') as file_out:
+        escritor = csv.DictWriter(file_out, ['id', 'nome', 'posicao', 'idade', 'clube']) 
+        escritor.writeheader()
+        escritor.writerows(jogadores)
+else:
+    with open('jogadores.csv', 'rt') as file_in:
+        leitor = csv.DictReader(file_in)
+        jogadores = []
+        for linha in leitor:
+            jogador = dict(linha)
+            jogadores.append(jogador)
+
 
 @app.route('/')
 def index():
@@ -25,6 +40,11 @@ def salvar():
     clube = request.form['clube']
 
     jogadores.append({'id':uuid4(), 'nome':nome.title(), 'posicao':posicao.title(), 'idade':idade, 'clube':clube.title()})
+    with open('jogadores.csv', 'wt') as file_out:
+        escritor = csv.DictWriter(file_out, ['id', 'nome', 'posicao', 'idade', 'clube']) 
+        escritor.writeheader()
+        escritor.writerows(jogadores)
+    
     return redirect(url_for('index'))
 
 @app.route('/excluir/<id>')
@@ -59,6 +79,11 @@ def salvar_edicao():
             jogador['posicao'] = posicao_editado.title()
             jogador['idade'] = idade_editado
             jogador['clube'] = clube_editado.title()
+
+    with open('jogadores.csv', 'wt') as file_out:
+        escritor = csv.DictWriter(file_out, ['id', 'nome', 'posicao', 'idade', 'clube']) 
+        escritor.writeheader()
+        escritor.writerows(jogadores)
 
     return redirect(url_for('index'))
 
