@@ -3,12 +3,17 @@
 <head>
     <title>Home</title>
 </head>
-<body>
+<body class="bg-warning">
+    
+    
     <div class="container">
-        <h1 class="text-center">Lista de Jogadores</h1>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2rem;">
+            <h1 class="text-center text-success" style="margin-top: 2rem; margin-bottom: 2rem">Lista de Jogadores</h1>
+            <img src="https://conteudo.cbf.com.br/cdn/imagens/logos/logo-topo.png?v=20220613" alt="Imagm logo da seleção brasileira">
+        </div>
         <table class="table">
             <thead>
-                <tr class="text-center">
+                <tr class="text-center text-success">
                     <th>Jogador</th>
                     <th>Posição</th>
                     <th>Idade</th>
@@ -19,7 +24,7 @@
             </thead>
             <tbody>
                 {% for jogador in jogadores %}
-                <tr class="text-center">
+                <tr class="text-center text-success">
                     <td>{{jogador['nome']}}</td>
                     <td>{{jogador['posicao']}}</td>
                     <td>{{jogador['idade']}}</td>
