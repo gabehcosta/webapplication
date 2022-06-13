@@ -24,7 +24,7 @@ def salvar():
     idade = request.form['idade']
     clube = request.form['clube']
 
-    jogadores.append({'id':uuid4(), 'nome':nome, 'posicao':posicao, 'idade':idade, 'clube':clube})
+    jogadores.append({'id':uuid4(), 'nome':nome.title(), 'posicao':posicao.title(), 'idade':idade, 'clube':clube.title()})
     return redirect(url_for('index'))
 
 @app.route('/excluir/<id>')
@@ -55,10 +55,10 @@ def salvar_edicao():
 
     for jogador in jogadores:
         if str(jogador['id']) == str(id_editado):
-            jogador['nome'] = nome_editado
-            jogador['posicao'] = posicao_editado
+            jogador['nome'] = nome_editado.title()
+            jogador['posicao'] = posicao_editado.title()
             jogador['idade'] = idade_editado
-            jogador['clube'] = clube_editado
+            jogador['clube'] = clube_editado.title()
 
     return redirect(url_for('index'))
 
