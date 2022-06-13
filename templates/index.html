@@ -25,7 +25,7 @@
                     <td>{{jogador['idade']}}</td>
                     <td>{{jogador['clube']}}</td>
                     <td><a href="/editar/{{ jogador['id'] }}" class="btn btn-success">Editar</a></td>
-                    <td><a href="/excluir/{{ jogador['id'] }}" class="btn btn-danger">Excluir</a></td>
+                    <td><a href="/excluir/{{ jogador['id'] }}" class="btn btn-danger btnExcluir">Excluir</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -33,4 +33,5 @@
         <a href="/cadastro-jogador" class="btn btn-primary">Adicionar jogador</a>
     </div>
 </body>
+<script src="/static/js/app.js"></script>
 {% endblock %}
