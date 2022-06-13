@@ -3,31 +3,35 @@
 <head>
     <title>Edição de Jogador</title>
 </head>
-<body>
+<body class="bg-warning">
     <div class="container">
-        <h1 class="text-center">Edição de Jogador</h1>
-        <form action="/salvar-edicao" method="POST">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2rem;">
+            <h1 class="text-center text-success">Edição de Jogador</h1>
+            <img src="https://conteudo.cbf.com.br/cdn/imagens/logos/logo-topo.png?v=20220613" alt="Imagm logo da seleção brasileira">
+        </div>
+        <form action="/salvar-edicao" method="POST" class="text-success">
             <div class="form-group" style="margin-top: 1.5rem">
                 <label for="id_edicao">ID do Jogador</label>
-                <input type="text" name="id_edicao" id="id_edicao" class="form-control" value="{{ jogador['id'] }}" readonly required>
+                <input type="text" name="id_edicao" id="id_edicao" class="form-control text-success" value="{{ jogador['id'] }}" readonly required>
             </div>
             <div class="form-group" style="margin-top: 1.5rem">
                 <label for="nome_edicao">Nome do Jogador</label>
-                <input type="text" name="nome_edicao" id="nome_edicao" class="form-control" value="{{ jogador['nome'] }}" required>
+                <input type="text" name="nome_edicao" id="nome_edicao" class="form-control text-success" value="{{ jogador['nome'] }}" required>
             </div>
             <div class="form-group" style="margin-top: 1.5rem">
                 <label for="posicao_edicao">Posição</label>
-                <input type="text" name="posicao_edicao" id="posicao_edicao" class="form-control" value="{{ jogador['posicao'] }}" required>
+                <input type="text" name="posicao_edicao" id="posicao_edicao" class="form-control text-success" value="{{ jogador['posicao'] }}" required>
             </div>
             <div class="form-group" style="margin-top: 1.5rem">
                 <label for="idade_edicao">Idade</label>
-                <input type="number" name="idade_edicao" id="idade_edicao" class="form-control" value="{{ jogador['idade'] }}" required>
+                <input type="number" name="idade_edicao" id="idade_edicao" class="form-control text-success" value="{{ jogador['idade'] }}" required>
             </div>
             <div class="form-group" style="margin-top: 1.5rem">
                 <label for="clube_edicao">Clube Atual</label>
-                <input type="text" name="clube_edicao" id="clube_edicao" class="form-control" value="{{ jogador['clube'] }}" required>
+                <input type="text" name="clube_edicao" id="clube_edicao" class="form-control text-success" value="{{ jogador['clube'] }}" required>
             </div>
-            <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem">Salvar Edição</button>
+            <button type="submit" class="btn btn-success" style="margin-top: 1.5rem">Salvar</button>
+            <a href="/" class="btn btn-primary"  style="margin-top: 1.5rem">Voltar</a>
         </form>
     </div>
 </body>
