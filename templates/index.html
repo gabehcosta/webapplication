@@ -4,26 +4,33 @@
     <title>Home</title>
 </head>
 <body>
-    <h1 class="text-center">Lista de Jogadores</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Jogador</th>
-                <th>Posição</th>
-                <th>Idade</th>
-                <th>Clube</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for jogador in jogadores %}
-            <tr>
-                <td>{{jogador['nome']}}</td>
-                <td>{{jogador['posicao']}}</td>
-                <td>{{jogador['idade']}}</td>
-                <td>{{jogador['clube']}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <h1 class="text-center">Lista de Jogadores</h1>
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>Jogador</th>
+                    <th>Posição</th>
+                    <th>Idade</th>
+                    <th>Clube</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for jogador in jogadores %}
+                <tr class="text-center">
+                    <td>{{jogador['nome']}}</td>
+                    <td>{{jogador['posicao']}}</td>
+                    <td>{{jogador['idade']}}</td>
+                    <td>{{jogador['clube']}}</td>
+                    <td><a href="#" class="btn btn-success">Editar</a></td>
+                    <td><a href="#" class="btn btn-danger">Excluir</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/cadastro-jogador" class="btn btn-primary">Adicionar jogador</a>
+    </div>
 </body>
 {% endblock %}
