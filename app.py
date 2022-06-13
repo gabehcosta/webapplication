@@ -38,8 +38,6 @@ def salvar():
     clube = request.form['clube']
 
     jogadores.append({'id':uuid4(), 'nome':nome.title(), 'posicao':posicao.title(), 'idade':idade, 'clube':clube.title()})
-    jogadores_ordenados = sorted(jogadores, key=lambda jogador: jogador['posicao'])
-    jogadores = jogadores_ordenados
 
     with open('jogadores.csv', 'wt') as file_out:
         escritor = csv.DictWriter(file_out, ['id', 'nome', 'posicao', 'idade', 'clube']) 
@@ -79,23 +77,14 @@ def salvar_edicao():
     posicao_editado = request.form['posicao_edicao']
     idade_editado = request.form['idade_edicao']
     clube_editado = request.form['clube_edicao']
-    posicao_alterada = False
-
-    if posicao_editado != jogador['posicao']:
-        posicao_alterada = True
 
     for jogador in jogadores:
         if str(jogador['id']) == str(id_editado):
             jogador['nome'] = nome_editado.title()
             jogador['posicao'] = posicao_editado.title()
-    
             jogador['idade'] = idade_editado
             jogador['clube'] = clube_editado.title()
 
-    if posicao_alterada:
-        jogadores_ordenados = sorted(jogadores, key=lambda jogador: jogador['posicao'])
-        jogadores = jogadores_ordenados
-    
     with open('jogadores.csv', 'wt') as file_out:
         escritor = csv.DictWriter(file_out, ['id', 'nome', 'posicao', 'idade', 'clube']) 
         escritor.writeheader()
@@ -104,4 +93,4 @@ def salvar_edicao():
     return redirect(url_for('index'))
 
 
-app.run(debug=True)
+app.run()
